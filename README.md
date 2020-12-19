@@ -7,6 +7,9 @@ own PKI setup!
 I have a homelab and like to deploy various services to try them out. More and more services require HTTPs (quite rightly)
 and I was getting fed up with the unverified host warnings in chrome. 
 
+I am also developing this as hopefully a way I can provide a way for my Terraform / Ansible scripts to request certs 
+and install them on the OS. 
+
 ## Frameworks used
 
 <b>Built with</b>
@@ -69,3 +72,53 @@ docker build .
 ```
 
 This will create the docker image ready to be used in whatever way you feel. 
+
+## Using
+
+Once the image has been deployed you can make requests to generate certs for other services 
+within your infra. 
+
+```javascript
+{
+  "signing": {
+    "default": {
+      "remote": "caserver"
+    }
+  },
+  "remotes": {
+    "caserver": "caserver.change.me:8888"
+  }
+}
+```
+
+```javascript
+{
+    "CN": "service",
+    "hosts": [
+        "service.change.me"
+    ],
+    "key": {
+        "algo": "rsa",
+        "size": 2048
+    },
+    "names": [
+        {
+            "C": "US",
+            "L": "California",
+            "ST": "San Francisco"
+        }
+    ]
+}
+```
+
+then run 
+
+```bash
+cfssl gencert -config config_client.json csr_client.json | cfssljson -bare db
+```
+
+this will generate a key, cert and CSR file ready for installing onto your service. 
+
+
+## TODO
+Learn more. 
