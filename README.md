@@ -1,5 +1,5 @@
 ## cfssl-docker
-Docker version of the cfssl serve from (Cloudflare SSL)[https://github.com/cloudflare/cfssl] it aims to dockerize 
+Docker version of the cfssl serve from [Cloudflare SSL](https://github.com/cloudflare/cfssl) it aims to dockerize 
 the process of generating some CA certs and getting to the point of having an API endpoint configured for your
 own PKI setup!
 
@@ -17,7 +17,7 @@ and install them on the OS.
 - [Cloudflare CFSSL](https://github.com/cloudflare/cfssl)
 
 ## Setup
-Following the (How to build yourt own public key infrastructure)[https://blog.cloudflare.com/how-to-build-your-own-public-key-infrastructure/]
+Following the [How to build yourt own public key infrastructure](https://blog.cloudflare.com/how-to-build-your-own-public-key-infrastructure/)
 
 You'll need to edit the ca-config.json file and add an auth key: 
 
