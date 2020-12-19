@@ -16,13 +16,9 @@ RUN git clone https://github.com/cloudflare/cfssl.git . && \
     make bin/rice && ./bin/rice embed-go -i=./cli/serve && \
     make all && cp bin/* /bin/
 
-#RUN go get -u github.com/cloudflare/cfssl/cmd/...
-#RUN go get -u github.com/GeertJohan/go.rice
-
 RUN addgroup -S cfssl && adduser -S cfssl -G cfssl -H -h /
 
 RUN mkdir -m777 /certs
-#RUN rice append cfssl -i /go/src/github.com/cloudflare/cfssl/cli/serve/static
 
 USER cfssl
 COPY --chown=cfssl:cfssl ca-csr.json /certs
