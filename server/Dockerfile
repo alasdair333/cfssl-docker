@@ -24,20 +24,17 @@ USER cfssl
 COPY --chown=cfssl:cfssl ca-csr.json /certs
 COPY --chown=cfssl:cfssl ca-config.json /certs
 
-WORKDIR /certs
-RUN cfssl gencert -initca ca-csr.json | cfssljson -bare ca
-
-WORKDIR /
-
-FROM scratch
+FROM alpine
 
 USER root
 
 WORKDIR /
 
+RUN mkdir -m777 /certs
 COPY --from=builder /etc/passwd /etc/passwd
 COPY --from=builder /bin/* /bin/
-COPY --from=builder /certs/* /
+COPY --from=builder /certs/* /certs/
+COPY entrypoint.sh /entrypoint.sh
 
 USER cfssl
-ENTRYPOINT [ "cfssl", "serve", "-address=0.0.0.0", "-ca-key=ca-key.pem", "-ca=ca.pem", "-config=ca-config.json" ]
+ENTRYPOINT [ "/bin/sh", "entrypoint.sh" ]
