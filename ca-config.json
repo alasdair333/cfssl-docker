@@ -11,5 +11,11 @@
                 "expiry": "8760h"
             }
         }
+    },
+    "auth_keys": {
+        "key1": {
+          "key": <16 byte hex API key here>,
+          "type": "standard"
+        }
     }
 }
