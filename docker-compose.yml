@@ -1,0 +1,6 @@
+version: "3.9"
+services:
+  cfssl-service:
+    build: cfssl-service
+    ports:
+      - "8888:8888"
