@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Generate JSON configs for our CA. 
-cat <<EOF  > cfssl-service/ca-config.json
+cat <<EOF  > ./cfssl-service/ca-config.json
 {
     "signing": {
         "default": {
@@ -24,7 +24,7 @@ cat <<EOF  > cfssl-service/ca-config.json
 }
 EOF
 
-cat <<EOF >  cfssl-service/ca-csr.json
+cat <<EOF >  ./cfssl-service/ca-csr.json
 {
     "CN": "$CN",
     "key": $KEY_SETTINGS
