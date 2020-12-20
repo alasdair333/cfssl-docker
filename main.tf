@@ -13,6 +13,7 @@ resource "null_resource" "cfssl_docker" {
             KEY_SETTINGS=jsonencode(var.key_settings)
             API_KEY=var.api_key
             CONTEXT=var.docker_context
+            MODULE_DIR=path.module
         }
     }
 

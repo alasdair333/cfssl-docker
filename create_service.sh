@@ -1,4 +1,5 @@
 #!/bin/bash
+pushd $MODULE_DIR
 
 # Generate JSON configs for our CA. 
 cat <<EOF  > ./cfssl-service/ca-config.json
@@ -34,4 +35,5 @@ cat <<EOF >  ./cfssl-service/ca-csr.json
 }
 EOF
 
-docker-compose --context $CONTEXT up -d
+docker-compose --context $CONTEXT up -d 
+popd
