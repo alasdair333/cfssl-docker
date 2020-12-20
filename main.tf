@@ -5,7 +5,7 @@ resource "null_resource" "cfssl_docker" {
     }
 
     provisioner "local-exec" {
-        command = "./create_service.sh"
+        command = "${path.module}/create_service.sh"
 
         environment = {
             CN=var.common_name
