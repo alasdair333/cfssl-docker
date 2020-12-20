@@ -1,11 +1,11 @@
 variable "common_name" {
     description = "name of the service e.g example.com"
-    type = "string"
+    type = string
 }
 
 variable "key_settings" {
     description = "encryption key settings"
-    type = "map"
+    type = map
     default = {
         "algo": "rsa",
         "size": 2048
@@ -14,7 +14,7 @@ variable "key_settings" {
 
 variable "attributes" {
     description = "Attributes to add the the certificate"
-    type = "map"
+    type = map
     default = {
             "C": "US",
             "L": "California",
@@ -24,10 +24,10 @@ variable "attributes" {
 
 variable "api_key" {
     description = "API key to communicate with CFSSL's REST APIs"
-    type = "string"
+    type = string
 }
 
 variable "docker_context" {
     description = "Which docker context to use"
-    type = "string"
+    type = string
 }

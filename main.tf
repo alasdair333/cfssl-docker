@@ -1,12 +1,11 @@
-locals {
-    build_command = "./create_service.sh"
-    destroy_command = "docker-compose --context ${var.docker_context} down"
-}
 
 resource "null_resource" "cfssl_docker" {
+    triggers = {
+      "context" = var.docker_context
+    }
 
     provisioner "local-exec" {
-        command = local.build_command
+        command = "./create_service.sh"
 
         environment = {
             CN=var.common_name
@@ -18,8 +17,8 @@ resource "null_resource" "cfssl_docker" {
     }
 
     provisioner "local-exec" {
-        when = "destroy"
-        command = local.destroy_command
+        when = destroy
+        command = "docker-compose --context ${self.triggers.docker_context} down"
     }
   
 }
