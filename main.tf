@@ -5,8 +5,8 @@ locals {
     })
     ca_csr_file = templatefile("${path.module}/cfssl-service/ca-csr.json.tpl", {
         cn = var.common_name
-        key_settings = var.key_settings,
-        attrs = var.attributes
+        key_settings = jsonencode(var.key_settings),
+        attrs = jsonencode(var.attributes)
     })
 }
 

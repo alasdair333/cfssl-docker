@@ -13,7 +13,7 @@
     },
     "auth_keys": {
         "key1": {
-          "key": ${api_key},
+          "key": "${api_key}",
           "type": "standard"
         }
     }

@@ -1,13 +1,9 @@
 {
     "CN": ${cn},
     "key": {
-        %{ for k,v in key_settings }
-        ${k}: ${v},
-        %{ endfor ~}
+        ${key_settings}
     },
     "names": [
-        %{ for k,v in attrs }
-        ${k}: ${v},
-        %{ endfor ~}
+        ${attrs}
     ]
 }
