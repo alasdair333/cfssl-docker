@@ -5,7 +5,7 @@ locals {
     })
     ca_csr_file = templatefile("${path.module}/cfssl-service/ca-csr.json.tpl", {
         cn = var.common_name
-        key_settings = jsonencode(var.key_settings),
+        key_settings =  replace(jsonencode(var.key_settings), "/\"([0-9]+\\.?[0-9]*)\"/", "$1"),
         attrs = jsonencode(var.attributes)
     })
 }
