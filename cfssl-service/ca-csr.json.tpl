@@ -1,5 +1,5 @@
 {
-    "CN": ${cn},
+    "CN": "${cn}",
     "key": {
         ${key_settings}
     },
