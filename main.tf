@@ -9,8 +9,8 @@ resource "null_resource" "cfssl_docker" {
 
         environment = {
             CN=var.common_name
-            ATTRS=var.attributes
-            KEY_SETTINGS=var.key_settings
+            ATTRS=tostring(var.attributes)
+            KEY_SETTINGS=tostring(var.key_settings)
             API_KEY=var.api_key
             CONTEXT=var.docker_context
         }
