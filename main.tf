@@ -2,6 +2,7 @@
 resource "null_resource" "cfssl_docker" {
     triggers = {
       "context" = var.docker_context
+      "path" = path.module
     }
 
     provisioner "local-exec" {
@@ -19,7 +20,7 @@ resource "null_resource" "cfssl_docker" {
 
     provisioner "local-exec" {
         when = destroy
-        command = "docker-compose --context ${self.triggers.docker_context} down"
+        command = "cd ${self.triggers.path} && docker-compose --context ${self.triggers.context} down"
     }
   
 }

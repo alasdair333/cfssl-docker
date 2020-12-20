@@ -28,7 +28,7 @@ EOF
 cat <<EOF >  ./cfssl-service/ca-csr.json
 {
     "CN": "$CN",
-    "key": $KEY_SETTINGS
+    "key": $KEY_SETTINGS,
     "names": [
         $ATTRS
     ]
