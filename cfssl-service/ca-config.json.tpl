@@ -13,7 +13,7 @@
     },
     "auth_keys": {
         "key1": {
-          "key": "abcdefabcdefabcd",
+          "key": ${api_key},
           "type": "standard"
         }
     }
