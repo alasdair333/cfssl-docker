@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Generate JSON configs for our CA. 
-CA_CONFIG = <<EOF
+cat <<EOF  > cfssl-service/ca-config.json
 {
     "signing": {
         "default": {
@@ -24,7 +24,7 @@ CA_CONFIG = <<EOF
 }
 EOF
 
-CA_CSR = <<EOF
+cat <<EOF >  cfssl-service/ca-csr.json
 {
     "CN": "$CN",
     "key": $KEY_SETTINGS
@@ -34,7 +34,4 @@ CA_CSR = <<EOF
 }
 EOF
 
-echo $CA_CONFIG > cfssl-service/ca-config.json
-echo $CA_CSR > cfssl-service/ca-csr.json
-
-docker-compose --context $CONTEXT --build up -d
+docker-compose --context $CONTEXT up -d
