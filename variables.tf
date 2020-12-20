@@ -5,7 +5,7 @@ variable "common_name" {
 
 variable "key_settings" {
     description = "encryption key settings"
-    type = map
+    type = object
     default = {
         "algo": "rsa",
         "size": 2048
